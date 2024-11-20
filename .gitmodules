@@ -1,0 +1,3 @@
+[submodule "Blocker/vendor/spdlog"]
+	path = Blocker/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
