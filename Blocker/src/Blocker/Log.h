@@ -19,3 +19,15 @@ namespace Blocker {
 	};
 }
 
+//Core log macros
+#define BLCKR_CORE_TRACE(...)      Blocker::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define BLCKR_CORE_INFO(...)       Blocker::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define BLCKR_CORE_WARN(...)       Blocker::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define BLCKR_CORE_ERROR(...)      Blocker::Log::GetCoreLogger()->error(__VA_ARGS__)
+
+//Client log macros
+#define BLCKR_TRACE(...)           Blocker::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define BLCKR_INFO(...)            Blocker::Log::GetClientLogger()->info(__VA_ARGS__)
+#define BLCKR_WARN(...)            Blocker::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define BLCKR_ERROR(...)           Blocker::Log::GetClientLogger()->error(__VA_ARGS__)
+

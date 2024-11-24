@@ -6,7 +6,10 @@ extern Blocker::Application* Blocker::CreateApplication();
 int main(int argc, char** argv)
 {
 	Blocker::Log::Init();
-	Blocker::Log::GetClientLogger()->warn("Initialized Log");
+	BLCKR_CORE_INFO("STARTED");
+
+	int a = 5;
+	BLCKR_INFO("Var a = {0}", a);
 
 	auto app = Blocker::CreateApplication();
 	app->Run();
