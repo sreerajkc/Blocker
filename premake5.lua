@@ -11,8 +11,8 @@ workspace "Blocker"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 project "Blocker"
-	location "Blocker"
-	kind "SharedLib"
+	location "Blocker" -- every vcs project files will be inside Blocker folder relative to this path
+	kind "SharedLib" -- means dll file
 	language "C++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") -- bin directory such as .dll, .exe
@@ -26,7 +26,8 @@ project "Blocker"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include"
 	}
 
 	filter "system:Windows"
@@ -43,7 +44,7 @@ project "Blocker"
 
 		postbuildcommands
 		{
-			("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox/Blocker.dll") -- %{cfg.buildtarget.relpath} is the folder where the out put file get written to
+			("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox/%{prj.name}.dll") -- %{cfg.buildtarget.relpath} is the folder where the out put file get written to
 		}
 
 	filter "configurations:Debug"

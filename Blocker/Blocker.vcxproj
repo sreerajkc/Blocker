@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>BLCKR_PLATFORM_WINDOWS;BLCKR_BUILD_DLL;BLCKR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -93,7 +93,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\Blocker\Blocker.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Debug-windows-x86_64\Blocker\Blocker.dll ..\bin\Debug-windows-x86_64\Sandbox\Blocker.dll</Command>
+      <Command>copy /B /Y ..\bin\Debug-windows-x86_64\Blocker\Blocker.dll ..\bin\Debug-windows-x86_64\Sandbox\$(ProjectName).dll</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -101,7 +101,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>BLCKR_PLATFORM_WINDOWS;BLCKR_BUILD_DLL;BLCKR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,7 +119,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\Blocker\Blocker.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Release-windows-x86_64\Blocker\Blocker.dll ..\bin\Release-windows-x86_64\Sandbox\Blocker.dll</Command>
+      <Command>copy /B /Y ..\bin\Release-windows-x86_64\Blocker\Blocker.dll ..\bin\Release-windows-x86_64\Sandbox\$(ProjectName).dll</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -127,7 +127,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>BLCKR_PLATFORM_WINDOWS;BLCKR_BUILD_DLL;BLCKR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -145,7 +145,7 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\Blocker\Blocker.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\Dist-windows-x86_64\Blocker\Blocker.dll ..\bin\Dist-windows-x86_64\Sandbox\Blocker.dll</Command>
+      <Command>copy /B /Y ..\bin\Dist-windows-x86_64\Blocker\Blocker.dll ..\bin\Dist-windows-x86_64\Sandbox\$(ProjectName).dll</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -153,6 +153,10 @@
     <ClInclude Include="src\Blocker\Application.h" />
     <ClInclude Include="src\Blocker\Core.h" />
     <ClInclude Include="src\Blocker\EntryPoint.h" />
+    <ClInclude Include="src\Blocker\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Blocker\Events\Event.h" />
+    <ClInclude Include="src\Blocker\Events\KeyEvent.h" />
+    <ClInclude Include="src\Blocker\Events\MouseEvent.h" />
     <ClInclude Include="src\Blocker\Log.h" />
   </ItemGroup>
   <ItemGroup>

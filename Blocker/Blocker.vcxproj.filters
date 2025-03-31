@@ -4,6 +4,9 @@
     <Filter Include="Blocker">
       <UniqueIdentifier>{272941E0-9308-C07B-9C20-4B52087F26DD}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Blocker\Events">
+      <UniqueIdentifier>{2B23B641-17F1-A947-0085-1A6EECF185AC}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Blocker.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Blocker\EntryPoint.h">
       <Filter>Blocker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Blocker\Events\ApplicationEvent.h">
+      <Filter>Blocker\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Blocker\Events\Event.h">
+      <Filter>Blocker\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Blocker\Events\KeyEvent.h">
+      <Filter>Blocker\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Blocker\Events\MouseEvent.h">
+      <Filter>Blocker\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Blocker\Log.h">
       <Filter>Blocker</Filter>
