@@ -1,3 +1,4 @@
+#include "blockerpch.h"
 #include "Log.h"
 
 namespace Blocker 

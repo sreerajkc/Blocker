@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Blocker/Core.h"
-
-#include <string>
-#include <functional>
+#include "blockerpch.h"
 
 namespace Blocker
 {

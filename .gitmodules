@@ -1,3 +1,6 @@
 [submodule "Blocker/vendor/spdlog"]
 	path = Blocker/vendor/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "Blocker/vendor/GLFW"]
+	path = Blocker/vendor/GLFW
+	url = https://github.com/TheCherno/GLFW

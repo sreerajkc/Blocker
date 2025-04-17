@@ -1,13 +1,16 @@
+#include "blockerpch.h"
 #include "Application.h"
-#include "Blocker/Events/ApplicationEvent.h"
 #include "Blocker/Log.h"
 
 
 namespace Blocker
 {
+#define BIND_EVENT_FN(x) std::bind(&Application::x,this,std::placeholders::_1)
+
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window->SetEventCallBacks(BIND_EVENT_FN(OnEvent));
 	}
 
 	Application::~Application()
@@ -16,8 +19,22 @@ namespace Blocker
 	}
 	void Application::Run()
 	{
-		WindowResizeEvent wre(1280, 720);
-		BLCKR_TRACE(wre.ToString());
-		while (true);
+		while (m_Running)
+		{
+			m_Window->OnUpdate();
+		}
+	}
+	void Application::OnEvent(Event& e)
+	{
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+		BLCKR_CORE_TRACE("{0}", e.ToString());
+	}
+
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
 	}
 }

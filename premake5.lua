@@ -10,6 +10,12 @@ workspace "Blocker"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+--include directories relative to root folder
+IncludeDir = {}
+IncludeDir["GLFW"] = "Blocker/vendor/GLFW/include"
+
+include "Blocker/vendor/GLFW" --includes the GLFW premake file, kind of like C++ header
+
 project "Blocker"
 	location "Blocker" -- every vcs project files will be inside Blocker folder relative to this path
 	kind "SharedLib" -- means dll file
@@ -17,6 +23,9 @@ project "Blocker"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") -- bin directory such as .dll, .exe
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}") -- intermediate file dir such as .lib, .pdb
+
+	pchheader "blockerpch.h"
+	pchsource "Blocker/src/blockerpch.cpp"
 
 	files
 	{
@@ -27,7 +36,14 @@ project "Blocker"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:Windows"
@@ -76,7 +92,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Blocker/vendor/spdlog/include",
-		"Blocker/src"
+		"Blocker/src",
+		"%{IncludeDir.GLFW}"
 	}
 
 	links

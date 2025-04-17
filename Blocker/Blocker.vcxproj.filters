@@ -7,6 +7,12 @@
     <Filter Include="Blocker\Events">
       <UniqueIdentifier>{2B23B641-17F1-A947-0085-1A6EECF185AC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Blocker.h" />
@@ -34,6 +40,13 @@
     <ClInclude Include="src\Blocker\Log.h">
       <Filter>Blocker</Filter>
     </ClInclude>
+    <ClInclude Include="src\Blocker\Window.h">
+      <Filter>Blocker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\blockerpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Blocker\Application.cpp">
@@ -42,5 +55,9 @@
     <ClCompile Include="src\Blocker\Log.cpp">
       <Filter>Blocker</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\blockerpch.cpp" />
   </ItemGroup>
 </Project>
