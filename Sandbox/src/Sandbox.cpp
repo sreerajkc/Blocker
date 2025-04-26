@@ -1,9 +1,32 @@
 #include <Blocker.h>
 
+
+class ExampleLayer : public Blocker::Layer
+{
+public:
+	ExampleLayer() : Layer("Example Layer")
+	{
+
+	}
+
+	void OnUpdate() override
+	{
+		BLCKR_INFO("ExampleLayer:Update");
+	}
+
+	void OnEvent(Blocker::Event& event) override
+	{
+		BLCKR_INFO("{0}", event);
+	}
+};
+
 class Sandbox : public Blocker::Application
 {
 public:
-	Sandbox() {}
+	Sandbox() 
+	{
+		PushLayer(new ExampleLayer());
+	}
 	~Sandbox() {}
 private:
 

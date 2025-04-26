@@ -37,6 +37,12 @@
     <ClInclude Include="src\Blocker\Events\MouseEvent.h">
       <Filter>Blocker\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Blocker\Layer.h">
+      <Filter>Blocker</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Blocker\LayerStack.h">
+      <Filter>Blocker</Filter>
+    </ClInclude>
     <ClInclude Include="src\Blocker\Log.h">
       <Filter>Blocker</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Blocker\Application.cpp">
+      <Filter>Blocker</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Blocker\Layer.cpp">
+      <Filter>Blocker</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Blocker\LayerStack.cpp">
       <Filter>Blocker</Filter>
     </ClCompile>
     <ClCompile Include="src\Blocker\Log.cpp">

@@ -3,6 +3,7 @@
 #include "Events/Event.h"
 #include "Platform/Windows/WindowsWindow.h"
 #include "Blocker/Events/ApplicationEvent.h"
+#include "Blocker/Layerstack.h"
 
 namespace Blocker
 {
@@ -15,13 +16,19 @@ namespace Blocker
 		void Run();
 		void OnEvent(Event& e);
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* overlay);
+
 	private :
 
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
+
+		LayerStack* m_LayerStack;
 	};
+
 
 	//To be defined in CLIENT
 	Application* CreateApplication();
