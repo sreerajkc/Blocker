@@ -7,8 +7,14 @@
     <Filter Include="Blocker\Events">
       <UniqueIdentifier>{2B23B641-17F1-A947-0085-1A6EECF185AC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Blocker\ImGui">
+      <UniqueIdentifier>{919FE38D-FD5F-5FC4-C69A-A841321AA4A0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -37,6 +43,9 @@
     <ClInclude Include="src\Blocker\Events\MouseEvent.h">
       <Filter>Blocker\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Blocker\ImGui\ImGuiLayer.h">
+      <Filter>Blocker\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Blocker\Layer.h">
       <Filter>Blocker</Filter>
     </ClInclude>
@@ -49,16 +58,20 @@
     <ClInclude Include="src\Blocker\Window.h">
       <Filter>Blocker</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\blockerpch.h" />
-    <ClInclude Include="src\Blocker\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Blocker\Application.cpp">
       <Filter>Blocker</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Blocker\ImGui\ImGuiLayer.cpp">
+      <Filter>Blocker\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Blocker\Layer.cpp">
       <Filter>Blocker</Filter>
@@ -69,11 +82,12 @@
     <ClCompile Include="src\Blocker\Log.cpp">
       <Filter>Blocker</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\blockerpch.cpp" />
-    <ClCompile Include="src\Blocker\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>

@@ -24,6 +24,7 @@ project "Blocker"
 	location "Blocker" -- every vcs project files will be inside Blocker folder relative to this path
 	kind "SharedLib" -- means dll file
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") -- bin directory such as .dll, .exe
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}") -- intermediate file dir such as .lib, .pdb
@@ -56,7 +57,6 @@ project "Blocker"
 
 	filter "system:Windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 		buildoptions "/utf-8"
 
@@ -74,23 +74,24 @@ project "Blocker"
 
 	filter "configurations:Debug"
 		defines "BLCKR_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "BLCKR_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "BLCKR_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") -- bin directory such as .dll, .exe
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}") -- intermediate file dir such as .lib, .pdb
@@ -116,7 +117,6 @@ project "Sandbox"
 
 	filter "system:Windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 		buildoptions "/utf-8"
 
@@ -127,15 +127,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "BLCKR_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "BLCKR_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "BLCKR_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"

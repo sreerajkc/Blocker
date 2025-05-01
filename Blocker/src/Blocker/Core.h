@@ -10,7 +10,11 @@
 	#error Blocker only supports Windows!
 #endif
 
-#ifdef BLCKR_ENABLE_ASSERTS
+#ifdef BLCKR_DEBUG
+	define BLCKR_ENABLE_ASSERTS
+#endif
+
+#if BLCKR_ENABLE_ASSERTS
 	#define BLCKR_ASSERT(x,...) { if(!(x)) {BLCKR_ERROR("Assertion Failed:{0}",__VA_ARGS___); ___debugbreak();} }
 	#define BLCKR_CORE_ASSERT(x,...) { if(!(x)) {BLCKR_ERROR("Assertion Failed:{0}",__VA_ARGS___); ___debugbreak();} }
 #else
