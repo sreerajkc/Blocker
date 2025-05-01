@@ -1,10 +1,7 @@
 #pragma once
 
-#include <GLFW/glfw3.h>
 #include "Blocker/Window.h"
-#include "Blocker/Events/KeyEvent.h"
-#include "Blocker/Events/MouseEvent.h"
-#include "Blocker/Events/ApplicationEvent.h"
+#include <GLFW/glfw3.h>
 
 namespace Blocker
 {

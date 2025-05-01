@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 --include directories relative to root folder
 IncludeDir = {}
 IncludeDir["GLFW"] = "Blocker/vendor/GLFW/include"
+IncludeDir["Glad"] = "Blocker/vendor/Glad/include"
 
 include "Blocker/vendor/GLFW" --includes the GLFW premake file, kind of like C++ header
+include "Blocker/vendor/Glad"
 
 project "Blocker"
 	location "Blocker" -- every vcs project files will be inside Blocker folder relative to this path
@@ -37,12 +39,14 @@ project "Blocker"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -55,7 +59,8 @@ project "Blocker"
 		defines 
 		{ 
 			"BLCKR_PLATFORM_WINDOWS",
-			"BLCKR_BUILD_DLL"
+			"BLCKR_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -96,7 +101,8 @@ project "Sandbox"
 	{
 		"Blocker/vendor/spdlog/include",
 		"Blocker/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links

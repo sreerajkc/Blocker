@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "Blocker/Log.h"
 
+#include "glad/glad.h"
+
 namespace Blocker
 {
 #define BIND_EVENT_FN(x) std::bind(&Application::x,this,std::placeholders::_1)

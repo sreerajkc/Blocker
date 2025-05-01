@@ -16,7 +16,7 @@ public:
 
 	void OnEvent(Blocker::Event& event) override
 	{
-		BLCKR_INFO("{0}", event);
+		BLCKR_TRACE("{0}", event);
 	}
 };
 
