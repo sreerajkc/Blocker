@@ -4,3 +4,6 @@
 [submodule "Blocker/vendor/GLFW"]
 	path = Blocker/vendor/GLFW
 	url = https://github.com/TheCherno/GLFW
+[submodule "Blocker/vendor/imgui"]
+	path = Blocker/vendor/imgui
+	url = https://github.com/TheCherno/imgui.git

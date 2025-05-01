@@ -4,6 +4,7 @@
 #include "Platform/Windows/WindowsWindow.h"
 #include "Blocker/Events/ApplicationEvent.h"
 #include "Blocker/Layerstack.h"
+#include "Window.h"
 
 namespace Blocker
 {
@@ -19,6 +20,9 @@ namespace Blocker
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
 
+		inline static Application& Get() { return *s_Instance; }
+		inline Window& GetWindow() { return *m_Window; }
+
 	private :
 
 		bool OnWindowClose(WindowCloseEvent& e);
@@ -27,6 +31,9 @@ namespace Blocker
 		bool m_Running = true;
 
 		LayerStack* m_LayerStack;
+
+	private:
+		static Application* s_Instance;
 	};
 
 

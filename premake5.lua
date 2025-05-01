@@ -14,9 +14,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Blocker/vendor/GLFW/include"
 IncludeDir["Glad"] = "Blocker/vendor/Glad/include"
+IncludeDir["ImGui"] = "Blocker/vendor/imgui"
 
 include "Blocker/vendor/GLFW" --includes the GLFW premake file, kind of like C++ header
 include "Blocker/vendor/Glad"
+include "Blocker/vendor/imgui"
 
 project "Blocker"
 	location "Blocker" -- every vcs project files will be inside Blocker folder relative to this path
@@ -40,13 +42,15 @@ project "Blocker"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

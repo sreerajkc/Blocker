@@ -5,6 +5,7 @@
 #include "Blocker/Application.h"
 #include "Blocker/Layer.h";
 #include "Blocker/Log.h"
+#include "Blocker/ImGui/ImGuiLayer.h"
 
 //----Entry Point----
 

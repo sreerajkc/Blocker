@@ -1,5 +1,6 @@
 #include <Blocker.h>
 
+using namespace Blocker;
 
 class ExampleLayer : public Blocker::Layer
 {
@@ -26,6 +27,7 @@ public:
 	Sandbox() 
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Blocker::ImGuiLayer);
 	}
 	~Sandbox() {}
 private:

@@ -6,14 +6,17 @@
 
 namespace Blocker
 {
-#define BIND_EVENT_FN(x) std::bind(&Application::x,this,std::placeholders::_1)
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
+		BLCKR_CORE_ASSERT(s_Instance!=nullptr,"Application already exists")
+		s_Instance = this;
+
 		m_LayerStack = new LayerStack();
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallBacks(BIND_EVENT_FN(OnEvent));
+		m_Window->SetEventCallBacks(BIND_EVENT_FN(Application::OnEvent));
 	}
 
 	Application::~Application()
@@ -36,7 +39,7 @@ namespace Blocker
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
 
 		// Going backwards because events should trigger in reverse order
 		// that is the top most layer event should be firing first
@@ -56,12 +59,12 @@ namespace Blocker
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack->PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack->PushOverlay(overlay);
+		overlay->OnAttach();
 	}
-
-
 }
