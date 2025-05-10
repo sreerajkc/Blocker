@@ -3,7 +3,7 @@
 #include "Blocker/Log.h"
 
 #include "glad/glad.h"
-
+#include "Input.h"
 namespace Blocker
 {
 	Application* Application::s_Instance = nullptr;
@@ -33,6 +33,9 @@ namespace Blocker
 			{
 				(*it)->OnUpdate();
 			}
+
+			auto[x, y] = Input::GetMousePosition();
+			BLCKR_CORE_INFO("{0},{1}", x, y);  
 		}
 	}
 

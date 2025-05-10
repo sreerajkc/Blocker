@@ -1,5 +1,6 @@
 workspace "Blocker"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -69,7 +70,7 @@ project "Blocker"
 
 		postbuildcommands
 		{
-			("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox/%{prj.name}.dll") -- %{cfg.buildtarget.relpath} is the folder where the out put file get written to
+			("{COPYFILE} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/%{prj.name}.dll\"") -- %{cfg.buildtarget.relpath} is the folder where the out put file get written to
 		}
 
 	filter "configurations:Debug"
