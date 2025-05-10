@@ -10,13 +10,16 @@ namespace Blocker
 
 	Application::Application()
 	{
-		BLCKR_CORE_ASSERT(s_Instance!=nullptr,"Application already exists")
-		s_Instance = this;
+		BLCKR_CORE_ASSERT(s_Instance != nullptr, "Application already exists")
+			s_Instance = this;
 
 		m_LayerStack = new LayerStack();
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBacks(BIND_EVENT_FN(Application::OnEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
@@ -34,8 +37,15 @@ namespace Blocker
 				(*it)->OnUpdate();
 			}
 
-			auto[x, y] = Input::GetMousePosition();
-			BLCKR_CORE_INFO("{0},{1}", x, y);  
+			m_ImGuiLayer->Begin();
+			for (auto it = m_LayerStack->begin(); it != m_LayerStack->end();++it)
+			{
+				(*it)->OnImGuiRender();
+			}
+			m_ImGuiLayer->End();
+
+			auto [x, y] = Input::GetMousePosition();
+			BLCKR_CORE_INFO("{0},{1}", x, y);
 		}
 	}
 
@@ -47,7 +57,7 @@ namespace Blocker
 		// Going backwards because events should trigger in reverse order
 		// that is the top most layer event should be firing first
 
-		for (auto it = m_LayerStack->end(); it != m_LayerStack->begin();) 
+		for (auto it = m_LayerStack->end(); it != m_LayerStack->begin();)
 		{
 			(*--it)->OnEvent(e);
 		}

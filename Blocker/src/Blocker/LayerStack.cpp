@@ -5,7 +5,6 @@ namespace Blocker
 {
 	LayerStack::LayerStack()
 	{
-		m_LayerInsert = m_Layers.begin();
 	}
 
 	LayerStack::~LayerStack()
@@ -18,7 +17,8 @@ namespace Blocker
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer); // insert elements at the given position
+		m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer); // insert elements at the given position
+		m_LayerInsertIndex++;
 	}
 
 	void LayerStack::PushOverlay(Layer* overlay)
@@ -32,7 +32,7 @@ namespace Blocker
 		if (it != m_Layers.end()) // end is a theoratical element comes after last element
 		{
 			m_Layers.erase(it);
-			m_LayerInsert--;
+			m_LayerInsertIndex--;
 		}
 	}
 

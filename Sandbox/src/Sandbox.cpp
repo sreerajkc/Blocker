@@ -1,5 +1,7 @@
 #include <Blocker.h>
 
+#include "ImGui.h"
+
 using namespace Blocker;
 
 class ExampleLayer : public Blocker::Layer
@@ -7,17 +9,13 @@ class ExampleLayer : public Blocker::Layer
 public:
 	ExampleLayer() : Layer("Example Layer")
 	{
-
 	}
 
-	void OnUpdate() override
+	void OnImGuiRender() override
 	{
-		BLCKR_INFO("ExampleLayer:Update");
-	}
-
-	void OnEvent(Blocker::Event& event) override
-	{
-		BLCKR_TRACE("{0}", event);
+		ImGui::Begin("Test");
+		ImGui::Text("Test");
+		ImGui::End();
 	}
 };
 
@@ -27,7 +25,6 @@ public:
 	Sandbox() 
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Blocker::ImGuiLayer);
 	}
 	~Sandbox() {}
 private:

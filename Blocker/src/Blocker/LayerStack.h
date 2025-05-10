@@ -19,7 +19,7 @@ namespace Blocker
 
 	private:
 		std::vector<Layer*> m_Layers;
-		std::vector<Layer*>::iterator m_LayerInsert; // Iterator for layer insert, overlays comes after this
+		unsigned int m_LayerInsertIndex = 0; // Iterator for layer insert, overlays comes after this
 	};
 
 }

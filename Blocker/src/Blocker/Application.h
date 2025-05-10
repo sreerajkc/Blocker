@@ -6,6 +6,8 @@
 #include "Blocker/Layerstack.h"
 #include "Window.h"
 
+#include "Blocker/ImGui/ImGuiLayer.h"
+
 namespace Blocker
 {
 	class BLOCKER_API Application
@@ -28,6 +30,8 @@ namespace Blocker
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
+
 		bool m_Running = true;
 
 		LayerStack* m_LayerStack;

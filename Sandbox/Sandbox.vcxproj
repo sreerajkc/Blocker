@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>BLCKR_PLATFORM_WINDOWS;BLCKR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Blocker\vendor\spdlog\include;..\Blocker\src;..\Blocker\vendor\GLFW\include;..\Blocker\vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Blocker\src;..\Blocker\vendor\spdlog\include;..\Blocker\vendor\GLFW\include;..\Blocker\vendor\Glad\include;..\Blocker\vendor\imgui;..\Blocker\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>BLCKR_PLATFORM_WINDOWS;BLCKR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Blocker\vendor\spdlog\include;..\Blocker\src;..\Blocker\vendor\GLFW\include;..\Blocker\vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Blocker\src;..\Blocker\vendor\spdlog\include;..\Blocker\vendor\GLFW\include;..\Blocker\vendor\Glad\include;..\Blocker\vendor\imgui;..\Blocker\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,7 +119,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>BLCKR_PLATFORM_WINDOWS;BLCKR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Blocker\vendor\spdlog\include;..\Blocker\src;..\Blocker\vendor\GLFW\include;..\Blocker\vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Blocker\src;..\Blocker\vendor\spdlog\include;..\Blocker\vendor\GLFW\include;..\Blocker\vendor\Glad\include;..\Blocker\vendor\imgui;..\Blocker\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -142,6 +142,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Blocker\Blocker.vcxproj">
       <Project>{272941E0-9308-C07B-9C20-4B52087F26DD}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Blocker\vendor\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

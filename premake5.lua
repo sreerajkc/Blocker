@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Blocker/vendor/GLFW/include"
 IncludeDir["Glad"] = "Blocker/vendor/Glad/include"
 IncludeDir["ImGui"] = "Blocker/vendor/imgui"
+IncludeDir["glm"] = "Blocker/vendor/glm"
 
 include "Blocker/vendor/GLFW" --includes the GLFW premake file, kind of like C++ header
 include "Blocker/vendor/Glad"
@@ -37,6 +38,9 @@ project "Blocker"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/glm/glm/**.h",
 	}
 
 	includedirs
@@ -45,7 +49,8 @@ project "Blocker"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -105,10 +110,12 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Blocker/vendor/spdlog/include",
 		"Blocker/src",
+		"Blocker/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
