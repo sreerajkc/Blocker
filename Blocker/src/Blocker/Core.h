@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef BLCKR_PLATFORM_WINDOWS
+#ifdef BLCKR_DYNAMIC_LINK
 	#ifdef BLCKR_BUILD_DLL  
 		#define	BLOCKER_API __declspec(dllexport)
 	#else
 		#define	BLOCKER_API __declspec(dllimport)
 	#endif
+#else
+	#define BLOCKER_API
+#endif
 #else
 	#error Blocker only supports Windows!
 #endif

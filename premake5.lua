@@ -24,9 +24,10 @@ include "Blocker/vendor/imgui"
 
 project "Blocker"
 	location "Blocker" -- every vcs project files will be inside Blocker folder relative to this path
-	kind "SharedLib" -- means dll file
+	kind "StaticLib" -- means dll file
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") -- bin directory such as .dll, .exe
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}") -- intermediate file dir such as .lib, .pdb
@@ -41,6 +42,11 @@ project "Blocker"
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
 		"%{prj.name}/vendor/glm/glm/**.h",
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -62,7 +68,6 @@ project "Blocker"
 	}
 
 	filter "system:Windows"
-		cppdialect "C++17"
 		systemversion "latest"
 		buildoptions "/utf-8"
 
@@ -73,31 +78,27 @@ project "Blocker"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("{COPYFILE} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/%{prj.name}.dll\"") -- %{cfg.buildtarget.relpath} is the folder where the out put file get written to
-		}
-
 	filter "configurations:Debug"
 		defines "BLCKR_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 	
 	filter "configurations:Release"
 		defines "BLCKR_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "BLCKR_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") -- bin directory such as .dll, .exe
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}") -- intermediate file dir such as .lib, .pdb
@@ -124,7 +125,6 @@ project "Sandbox"
 	}
 
 	filter "system:Windows"
-		cppdialect "C++17"
 		systemversion "latest"
 		buildoptions "/utf-8"
 
@@ -136,14 +136,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "BLCKR_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "BLCKR_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "BLCKR_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
