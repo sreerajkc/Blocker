@@ -1,7 +1,10 @@
 #pragma once
 
 #include "Blocker/Window.h"
+#include "Blocker/Renderer/GraphicsContext.h"
+
 #include <GLFW/glfw3.h>
+
 
 namespace Blocker
 {
@@ -28,6 +31,7 @@ namespace Blocker
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

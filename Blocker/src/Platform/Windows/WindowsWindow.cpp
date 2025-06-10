@@ -5,7 +5,7 @@
 #include "Blocker/Events/MouseEvent.h"
 #include "Blocker/Events/ApplicationEvent.h"
 
-#include <Glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Blocker
 {
@@ -34,8 +34,7 @@ namespace Blocker
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
-		glClear(GL_COLOR_BUFFER_BIT);
+		m_Context->SwapBuffers();
 	}
 
 
@@ -47,6 +46,7 @@ namespace Blocker
 
 		BLCKR_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
+
 		if (!s_GLFWInitialized)
 		{
 			// TODO: glfwTerminate on system shutdown
@@ -56,13 +56,15 @@ namespace Blocker
 			glfwSetErrorCallback(GLFWErrorCallback);
 
 			s_GLFWInitialized = true;
-
 		}
 
 		m_Window = glfwCreateWindow(props.Width, props.Height, props.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		BLCKR_CORE_ASSERT(status, "Failed to initialize glad!");
+
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+
+		
+		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

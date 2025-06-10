@@ -146,6 +146,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Blocker.h" />
     <ClInclude Include="src\Blocker\Application.h" />
     <ClInclude Include="src\Blocker\Core.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="src\Blocker\LayerStack.h" />
     <ClInclude Include="src\Blocker\Log.h" />
     <ClInclude Include="src\Blocker\MouseButtonCodes.h" />
+    <ClInclude Include="src\Blocker\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Blocker\Window.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -595,6 +597,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Blocker\Application.cpp" />
     <ClCompile Include="src\Blocker\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Blocker\ImGui\ImGuiLayer.cpp" />

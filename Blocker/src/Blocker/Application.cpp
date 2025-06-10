@@ -30,6 +30,8 @@ namespace Blocker
 	{
 		while (m_Running)
 		{
+			//glClear(GL_COLOR_BUFFER_BIT);
+
 			m_Window->OnUpdate();
 
 			for (auto it = m_LayerStack->begin(); it != m_LayerStack->end();++it)

@@ -1,9 +1,9 @@
 #include "blockerpch.h"
 #include "ImGuiLayer.h" 
 
-#include "ImGui.h"
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
+#include "ImGui.h"
 #include "Blocker/Application.h"
 
 //TEMPORARY
